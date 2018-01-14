@@ -36,4 +36,5 @@ return array(
 	'Omnipay\\Epay\\' => array($vendorDir . '/xown/omnipay-epay/src'),
 	'Omnipay\\PayflowExtended\\' => array($vendorDir . '/th3third/omnipay-payflow-extended/src'),
 	'Omnipay\\BluePay\\' => array($vendorDir . '/zburke/omnipay-bluepay/src'),
+	'Omnipay\\PlugNPay\\' => array($vendorDir . '/caswell-wc/omnipay-plugnpay/src'),
 );
