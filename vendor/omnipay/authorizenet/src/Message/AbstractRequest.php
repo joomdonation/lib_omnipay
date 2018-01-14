@@ -151,7 +151,14 @@ abstract class AbstractRequest extends CommonAbstractRequest
 
     public function sendData($data)
     {
-        $httpResponse = $this->httpClient->post($this->getEndpoint(), null, $data)->send();
+		// Force TLS 1.2
+		$config                          = $this->httpClient->getConfig();
+		$curlOptions                     = $config->get('curl.options');
+		$curlOptions[CURLOPT_SSLVERSION] = 6;
+		$config->set('curl.options', $curlOptions);
+		$this->httpClient->setConfig($config);
+        
+		$httpResponse = $this->httpClient->post($this->getEndpoint(), null, $data)->send();
 
         return $this->response = new AIMResponse($this, $httpResponse->getBody());
     }
