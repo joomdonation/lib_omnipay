@@ -39,7 +39,9 @@ class Response extends AbstractResponse
 	{
 		if (isset($this->data['vpc_MerchTxnRef']))
 		{
-			return $this->data['vpc_MerchTxnRef'];
+			$filter = \JFilterInput::getInstance();
+
+			return $filter->clean($this->data['vpc_MerchTxnRef'], 'INT');
 		}
 
 		return parent::getTransactionId();
